@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "http-server -a 0.0.0.0 -p 8000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/chilleren/demo_control_panel/issues"
   },
-  "homepage": "https://github.com/chilleren/demo_control_panel"
+  "homepage": "https://github.com/chilleren/demo_control_panel",
+  "dependencies": {
+    "http-server": "^0.8.0"
+  }
 }
