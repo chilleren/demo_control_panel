@@ -5,7 +5,6 @@
   "authors": [
     "Chris Hilleren <chilleren@gmail.com>"
   ],
-  "license": "MIT",
   "private": true,
   "ignore": [
     "**/.*",

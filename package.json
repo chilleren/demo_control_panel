@@ -2,7 +2,6 @@
   "name": "demo_control_panel",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "http-server -a 0.0.0.0 -p 8000",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,13 +10,15 @@
     "type": "git",
     "url": "https://github.com/chilleren/demo_control_panel.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/chilleren/demo_control_panel/issues"
-  },
+  "author": "Chris Hilleren",
   "homepage": "https://github.com/chilleren/demo_control_panel",
   "dependencies": {
-    "http-server": "^0.8.0"
+    "body-parser": "^1.13.3",
+    "connect-mongo": "^0.8.2",
+    "express": "^4.13.3",
+    "fs": "0.0.2",
+    "http-server": "^0.8.0",
+    "mongoose": "^4.1.6",
+    "path": "^0.11.14"
   }
 }
