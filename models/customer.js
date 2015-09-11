@@ -2,11 +2,10 @@
 
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
   
 var CustomerSchema = new Schema({
-  email: {type: String, required: true},
+  email: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now() }
 });
-
 
 module.exports = mongoose.model("Customer", CustomerSchema);

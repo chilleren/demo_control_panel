@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "http-server -a 0.0.0.0 -p 8000",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,11 +13,9 @@
   "author": "Chris Hilleren",
   "homepage": "https://github.com/chilleren/demo_control_panel",
   "dependencies": {
-    "body-parser": "^1.13.3",
     "connect-mongo": "^0.8.2",
     "express": "^4.13.3",
     "fs": "0.0.2",
-    "http-server": "^0.8.0",
     "mongoose": "^4.1.6",
     "path": "^0.11.14"
   }

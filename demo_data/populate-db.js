@@ -2,7 +2,6 @@
 var mongoose = require('mongoose');
 
 module.exports = function (callback) {
-
   var Customer = mongoose.model('Customer');
   var Product = mongoose.model('Product');
   var Order = mongoose.model('Order');
@@ -11,21 +10,22 @@ module.exports = function (callback) {
   var productData = require('./products');
   var orderData = require('./orders');
 
-  Customer.remove({})
+  Product.remove({})
     .then(function () {
-      Customer.collection.insert(customerData);
+      return Product.collection.insert(productData);
     })
     .then(function () {
-      Product.remove({});
+      return Customer.remove({});
     })
     .then(function () {
-      Product.collection.insert(productData);
+      return Customer.collection.insert(customerData);
     })
     .then(function () {
-      Order.remove({});
+      return Order.remove({});
     })
     .then(function () {
-      Order.collection.insert(orderData);
+      //return Order.collection.insert(orderData);
+      return null;
     })
     .then(callback);
 }
