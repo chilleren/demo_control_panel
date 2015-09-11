@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var path = require('path');
 
 var routes = require('./routes/index');
+var populateDb = require('./demo_data/populate-db');
 
 var app = express();
 
@@ -25,6 +26,10 @@ mongoose.connection.once("open", function () {
 
   //initialize routes
   routes(app);
+
+  populateDb(function () {
+    console.log('success!');
+  });
 
   app.use(express.static(__dirname + "/public"));
 
