@@ -2,6 +2,10 @@
 
 angular.module('controllers.products', [])
 
-.controller('ProductsCtrl', ['$scope', function($scope) {
+.controller('ProductsCtrl', ['$scope', '$http', function($scope, $http) {
   
+  $http.get('/products').success(function (products) {
+
+    $scope.products = products;
+  });
 }]);
