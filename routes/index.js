@@ -20,7 +20,7 @@ module.exports = function (app) {
   });
 
   app.get('/orders', function (req, res) {
-    return Order.find(function (err, orders) {
+    return Order.find().populate('_product').populate('_customer').exec(function (err, orders) {
       return res.json(err || orders);
     });
   });

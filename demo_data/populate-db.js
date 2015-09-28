@@ -24,8 +24,13 @@ module.exports = function (callback) {
       return Order.remove({});
     })
     .then(function () {
-      //return Order.collection.insert(orderData);
-      return null;
+
+      //todo: do this the promise way
+      return orderData(function (err, orders) {
+        if (err) throw err;
+
+        return Order.collection.insert(orders);
+      });
     })
     .then(callback);
 }

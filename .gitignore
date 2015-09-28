@@ -3,3 +3,4 @@ public/bower_components/**/*
 .sass-cache/**/*
 public/css/**/*.css
 public/css/**/*.css.*
+npm-debug.log
