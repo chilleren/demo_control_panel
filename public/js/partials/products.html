@@ -1,4 +1,24 @@
-products
-<ul>
-  <li ng-repeat="product in products">{{product.name}} {{product.price | currency}}</li>
-</ul>
+<table class="table">
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      Description
+    </th>
+    <th>
+      Price
+    </th>
+  </tr>
+  <tr ng-repeat="product in products">
+    <td>
+      {{product.name}}
+    </td>
+    <td>
+      {{product.description}}
+    </td>
+    <td>
+      {{product.price | currency}}
+    </td>
+  </tr>
+</table>

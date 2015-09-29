@@ -1,4 +1,30 @@
-customers
-<ul>
-  <li ng-repeat="customer in customers">{{customer.email}}</li>
-</ul>
+<table class="table">
+  <tr>
+    <th>
+      Username
+    </th>
+    <th>
+      Email
+    </th>
+    <th>
+      Full Name
+    </th>
+    <th>
+      Created At
+    </th>
+  </tr>
+  <tr ng-repeat="customer in customers">
+    <td>
+      {{customer.username}}
+    </td>
+    <td>
+      {{customer.email}}
+    </td>
+    <td>
+      {{customer.firstname}} {{customer.lastname}}
+    </td>
+    <td>
+      {{customer.createdAt | date}}
+    </td>
+  </tr>
+</table>
