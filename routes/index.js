@@ -3,25 +3,16 @@
 var mongoose = require("mongoose");
 
 module.exports = function (app) {
-  var Customer = mongoose.model("Customer");
-  var Product = mongoose.model("Product");
-  var Order = mongoose.model("Order");
+  var customersController = require("../controllers/customers-controller");
+  var productsController = require("../controllers/products-controller");
+  var ordersController = require("../controllers/orders-controller");
 
-  app.get('/customers', function (req, res) {
-    return Customer.find(function (err, customers) {
-      return res.json(err || customers);
-    });
-  });
+  app.get('/customers', customersController.find);
+  app.get('/customers/:id', customersController.findById);
 
-  app.get('/products', function (req, res) {
-    return Product.find(function (err, products) {
-      return res.json(err || products);
-    });
-  });
+  app.get('/products', productsController.find);
+  app.get('/products/:id', productsController.findById);
 
-  app.get('/orders', function (req, res) {
-    return Order.find().populate('_product').populate('_customer').exec(function (err, orders) {
-      return res.json(err || orders);
-    });
-  });
+  app.get('/orders', ordersController.find);
+  app.get('/orders/:id', ordersController.findById);
 }
