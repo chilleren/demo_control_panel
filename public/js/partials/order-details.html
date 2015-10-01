@@ -1,0 +1,26 @@
+<h1>Order deets</h1>
+
+<p>
+  id: {{order._id}}
+</p>
+<p>
+  date: {{order.createdAt | date}}
+</p>
+<p>
+  status: {{order.status}}
+</p>
+<p>
+  product: {{order._product.name}}
+</p>
+<p>
+  orderer: {{order._customer.username}} ({{order._customer.email}})
+</p>
+<p>
+  quantity: {{order.quantity}}
+</p>
+<p>
+  unit price: {{order._product.price | currency}}
+</p>
+<p>
+  total: {{order.quantity * order._product.price | currency}}
+</p>

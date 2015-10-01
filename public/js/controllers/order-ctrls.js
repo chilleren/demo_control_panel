@@ -8,4 +8,10 @@ angular.module('controllers.orders', [])
     $scope.orders = orders;
   });
 
+}])
+
+.controller('OrderDetailsCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+  $http.get('/orders/' + $routeParams.orderId).success(function (order) {
+    $scope.order = order;
+  });
 }]);

@@ -7,4 +7,10 @@ angular.module('controllers.customers', [])
 
     $scope.customers = customers;
   });
+}])
+
+.controller('CustomerDetailsCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+  $http.get('/customers/' + $routeParams.customerId).success(function (customer) {
+    $scope.customer = customer;
+  });
 }]);

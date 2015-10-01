@@ -2,7 +2,6 @@
 
 var controlPanelApp = angular.module('controlPanelApp', [
   'ngRoute',
-  'controllers.main',
   'controllers.dashboard',
   'controllers.products',
   'controllers.orders',
@@ -26,5 +25,17 @@ controlPanelApp.config(['$routeProvider', function ($routeProvider) {
     .when('/customers', {
       templateUrl: 'js/partials/customers.html',
       controller: 'CustomersCtrl'
+    })
+    .when('/customers/:customerId', {
+      templateUrl: 'js/partials/customer-details.html',
+      controller: 'CustomerDetailsCtrl'
+    })
+    .when('/orders/:orderId', {
+      templateUrl: 'js/partials/order-details.html',
+      controller: 'OrderDetailsCtrl'
+    })
+    .when('/products/:productId', {
+      templateUrl: 'js/partials/product-details.html',
+      controller: 'ProductDetailsCtrl'
     })
 }]);
