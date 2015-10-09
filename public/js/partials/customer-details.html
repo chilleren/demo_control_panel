@@ -11,3 +11,9 @@
 <p>
   created: {{customer.createdAt | date}}
 </p>
+<h2>Orders</h2>
+<ul>
+  <li ng-repeat="order in customer._orders">
+      <a ng-href="/#/orders/{{order._id}}">Order {{order._id}}</a>
+  </li>
+</ul>

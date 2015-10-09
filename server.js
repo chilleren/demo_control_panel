@@ -23,12 +23,12 @@ mongoose.connection.once("open", function () {
 
   app.use(express.static(__dirname + "/public")); //serve static content
 
-  populateDb(function () {
-    console.log('database populated');
+  // populateDb(function () {
+  //   console.log('database populated');
 
     var port = 8000;
     app.listen(port, function () {
       console.log("Listening on port " + port);
     });
-  });
+  // });
 });

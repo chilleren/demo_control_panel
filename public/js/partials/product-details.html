@@ -9,3 +9,11 @@
 <p>
   price: {{product.price | currency}}
 </p>
+
+<h2>Orders</h2>
+
+<ul>
+  <li ng-repeat="order in product._orders">
+      <a ng-href="/#/orders/{{order._id}}">Order {{order._id}}</a>
+  </li>
+</ul>

@@ -2,6 +2,7 @@
 
 var mongoose = require("mongoose");
 var Product = mongoose.model("Product");
+var Order = mongoose.model("Order");
 
 module.exports = {
 
@@ -12,8 +13,17 @@ module.exports = {
   },
 
   findById: function (req, res, next) {
-    return Product.findById(req.params.id, function (err, customers) {
-      return res.json(err || customers);
+
+    //todo: promisify
+    return Product.findById(req.params.id, function (err, product) {
+      if (err) {
+        res.json(err);
+      }
+      return Order.find({_product: product._id}, function (err, orders) {
+        product = JSON.parse(JSON.stringify(product));
+        product._orders = orders || [];
+        return res.json(err || product);
+      });
     });
   }
 
