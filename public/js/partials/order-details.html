@@ -10,7 +10,7 @@
   status: {{order.status}}
 </p>
 <p>
-  product: {{order._product.name}}
+  product: <a ng-href="/#/products/{{order._product._id}}">{{order._product.name}}</a>
 </p>
 <p>
   orderer: {{order._customer.username}} ({{order._customer.email}})
@@ -23,4 +23,7 @@
 </p>
 <p>
   total: {{order.quantity * order._product.price | currency}}
+</p>
+<p>
+  <a ng-href="/#/customers/{{order._customer._id}}">{{order._customer.username}} ({{order._customer.email}})</a>
 </p>

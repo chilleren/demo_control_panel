@@ -15,7 +15,7 @@
   </tr>
   <tr ng-repeat="customer in customers">
     <td>
-      {{customer.username}}
+      <a ng-href="/#/customers/{{customer._id}}">{{customer.username}}</a>
     </td>
     <td>
       {{customer.email}}

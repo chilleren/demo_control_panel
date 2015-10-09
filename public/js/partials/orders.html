@@ -27,7 +27,7 @@
   </tr>
   <tr ng-repeat="order in orders">
     <td>
-      {{order._id}}
+      <a ng-href="/#/orders/{{order._id}}">{{order._id}}</a>
     </td>
     <td>
       {{order.createdAt | date}}
@@ -36,10 +36,10 @@
       {{order.status}}
     </td>
     <td>
-      {{order._product.name}}
+      <a ng-href="/#/products/{{order._product._id}}">{{order._product.name}}</a>
     </td>
     <td>
-      {{order._customer.username}} ({{order._customer.email}})
+      <a ng-href="/#/customers/{{order._customer._id}}">{{order._customer.username}} ({{order._customer.email}})</a>
     </td>
     <td>
       {{order.quantity}}
