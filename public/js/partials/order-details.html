@@ -7,7 +7,7 @@
   date: {{order.createdAt | date}}
 </p>
 <p>
-  status: {{order.status}}
+  status: <span class="label label-{{order.statusLabel}}">{{order.status}}</span>
 </p>
 <p>
   product: <a ng-href="/#/products/{{order._product._id}}">{{order._product.name}}</a>

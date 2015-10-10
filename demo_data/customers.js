@@ -9,7 +9,8 @@ for (var i = 0; i < 100; i++) {
     email: faker.internet.email(),
     username: faker.internet.userName(),
     firstname: faker.name.firstName(),
-    lastname: faker.name.lastName()
+    lastname: faker.name.lastName(),
+    createdAt: faker.date.past()
   });
 }
 

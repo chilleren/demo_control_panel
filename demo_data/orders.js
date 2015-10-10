@@ -1,18 +1,21 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var faker = require('faker');
 
 var Customer = mongoose.model("Customer");
 var Product = mongoose.model("Product");
 
 
 function randomStatus () {
-  var statuses = ['In Progress', 'Complete'];
+  var statuses = ['In Progress', 'Canceled', 'Complete'];
   var randomNumber = randomInt(0, 5);
   if (randomNumber === 0) {
     return statuses[0];
-  } else {
+  } else if (randomNumber === 1) {
     return statuses[1];
+  } else {
+    return statuses[2];
   }
 }
 
@@ -37,7 +40,8 @@ module.exports = function (callback) {
           _product: pluckRandom(products)._id,
           _customer: pluckRandom(customers)._id,
           quantity: randomInt(1, 4),
-          status: randomStatus()
+          status: randomStatus(),
+          createdAt: faker.date.past()
         });
       }
 
