@@ -1,19 +1,21 @@
-<h1>product details</h1>
+<div class="widget">
+  <h1>product details</h1>
 
-<p>
-  name: {{product.name}}
-</p>
-<p>
-  desc: {{product.description}}
-</p>
-<p>
-  price: {{product.price | currency}}
-</p>
+  <p>
+    name: {{product.name}}
+  </p>
+  <p>
+    desc: {{product.description}}
+  </p>
+  <p>
+    price: {{product.price | currency}}
+  </p>
 
-<h2>Orders</h2>
+  <h2>Orders</h2>
 
-<ul>
-  <li ng-repeat="order in product._orders">
-      <a ng-href="/#/orders/{{order._id}}">Order {{order._id}}</a>
-  </li>
-</ul>
+  <ul>
+    <li ng-repeat="order in product._orders">
+        <a ng-href="/#/orders/{{order._id}}">Order {{order._id}}</a>
+    </li>
+  </ul>
+</div>

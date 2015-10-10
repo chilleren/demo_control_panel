@@ -5,7 +5,8 @@ var controlPanelApp = angular.module('controlPanelApp', [
   'controllers.dashboard',
   'controllers.products',
   'controllers.orders',
-  'controllers.customers'
+  'controllers.customers',
+  'directives'
 ]);
 
 controlPanelApp.config(['$routeProvider', function ($routeProvider) {
