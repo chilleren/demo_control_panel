@@ -4,3 +4,4 @@ public/bower_components/**/*
 public/css/**/*.css
 public/css/**/*.css.*
 npm-debug.log
+**/.DS_Store

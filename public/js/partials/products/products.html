@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="widget">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Description
+              </th>
+              <th>
+                Price
+              </th>
+            </tr>
+          </thead>
+          <tr ng-repeat="product in products">
+            <td>
+              <a ng-href="/#/products/{{product._id}}">{{product.name}}</a>
+            </td>
+            <td>
+              {{product.description}}
+            </td>
+            <td>
+              {{product.price | currency}}
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

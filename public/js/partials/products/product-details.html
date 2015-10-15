@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="widget">
+        <h1>product details</h1>
+
+        <p>
+          name: {{product.name}}
+        </p>
+        <p>
+          desc: {{product.description}}
+        </p>
+        <p>
+          price: {{product.price | currency}}
+        </p>
+
+        <h2>Orders</h2>
+
+        <ul>
+          <li ng-repeat="order in product._orders">
+              <a ng-href="/#/orders/{{order._id}}">Order {{order._id}}</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>

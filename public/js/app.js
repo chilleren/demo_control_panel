@@ -12,31 +12,31 @@ var controlPanelApp = angular.module('controlPanelApp', [
 controlPanelApp.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'js/partials/dashboard.html',
+      templateUrl: 'js/partials/dashboard/dashboard.html',
       controller: 'DashboardCtrl'
     })
     .when('/products', {
-      templateUrl: 'js/partials/products.html',
+      templateUrl: 'js/partials/products/products.html',
       controller: 'ProductsCtrl'
     })
     .when('/orders', {
-      templateUrl: 'js/partials/orders.html',
+      templateUrl: 'js/partials/orders/orders.html',
       controller: 'OrdersCtrl'
     })
     .when('/customers', {
-      templateUrl: 'js/partials/customers.html',
+      templateUrl: 'js/partials/customers/customers.html',
       controller: 'CustomersCtrl'
     })
     .when('/customers/:customerId', {
-      templateUrl: 'js/partials/customer-details.html',
+      templateUrl: 'js/partials/customers/customer-details.html',
       controller: 'CustomerDetailsCtrl'
     })
     .when('/orders/:orderId', {
-      templateUrl: 'js/partials/order-details.html',
+      templateUrl: 'js/partials/orders/order-details.html',
       controller: 'OrderDetailsCtrl'
     })
     .when('/products/:productId', {
-      templateUrl: 'js/partials/product-details.html',
+      templateUrl: 'js/partials/products/product-details.html',
       controller: 'ProductDetailsCtrl'
     })
 }]);
