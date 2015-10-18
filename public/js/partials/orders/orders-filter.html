@@ -1,21 +1,20 @@
 
 <div class="widget">
+<form>
+  <div class="form-group">
+    <label>Search</label>
+    <input type="text" placeholder="search" ng-model="searchString" ng-change="search()" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Status</label>
 
+    <select class="form-control" ng-model="statusFilter" ng-change="filterByStatus()">
+      <option>All</option>
+      <option>Complete</option>
+      <option>In Progress</option>
+      <option>Canceled</option>
+    </select>
+  </div>
 
-    <div style="display:inline-block; min-height:290px;">
-      <uib-datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></uib-datepicker>
-    </div>
-
-  <p class="input-group">
-
-    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" close-text="Close" />
-
-    <span class="input-group-btn">
-      <button type="button" class="btn btn-default" ng-click="open($event)">
-        <i class="glyphicon glyphicon-calendar"></i>
-      </button>
-    </span>
-  </p>
-
-  <input type="text" placeholder="search" ng-model="searchString" ng-change="search()">
+  </form>
 </div>

@@ -10,17 +10,6 @@ angular.module('controllers.orders', ['ui.bootstrap'])
     $scope.orders = ordersMasterList
   });
 
-  $scope.status = {
-    opened: false
-  };
-
-  $scope.dt = new Date();
-
-  $scope.open = function($event) {
-    console.log('trying to open')
-    $scope.status.opened = true;
-  };
-
   $scope.search = function () {
     $scope.orders = ordersMasterList.filter(function (order) {
       var searchString = $scope.searchString.toLowerCase();
@@ -31,6 +20,15 @@ angular.module('controllers.orders', ['ui.bootstrap'])
     });
   }
 
+  $scope.filterByStatus = function () {
+    $scope.orders = ordersMasterList.filter(function (order) {
+      if ($scope.statusFilter === "All") {
+        return true;
+      }
+      return  order.status === $scope.statusFilter;
+    });
+  }
+
 }])
 
 .filter('highlight', function ($sce) {
@@ -38,7 +36,6 @@ angular.module('controllers.orders', ['ui.bootstrap'])
     if (phrase) {
       text = text.replace(new RegExp('(' + phrase + ')', 'gi'), '<span class="highlighted">$1</span>');
     }
-
     return $sce.trustAsHtml(text)
   }
 })
