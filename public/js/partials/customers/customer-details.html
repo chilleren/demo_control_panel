@@ -1,9 +1,13 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col-md-12">
-
+      <h1>{{customer.username}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
       <div class="widget">
-        <h1>customer details</h1>
+        <h2>Customer Details</h2>
         <p>
           username: {{customer.username}}
         </p>
@@ -16,11 +20,31 @@
         <p>
           created: {{customer.createdAt | date}}
         </p>
-        <h2>Orders</h2>
+      </div>
+    </div>
+    <div class="col-md-9">
+
+      <div class="widget">
+        <h2>Order History</h2>
         <ul>
-          <li ng-repeat="order in customer._orders">
-              <a ng-href="/#/orders/{{order._id}}">Order {{order._id}}</a>
-          </li>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Order Id</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="order in customer._orders">
+                <td>{{order._id}}</td>
+                <td><span class="label label-{{order.statusLabel}}">{{order.status}}</span></td>
+                <td>{{order.createdAt | date}}</td>
+                <td>{{order.quantity * order._product.price | currency}}</td>
+              </tr>
+            </tbody>
+          </table>
         </ul>
       </div>
 

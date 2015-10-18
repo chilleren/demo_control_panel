@@ -2,11 +2,11 @@
 
 angular.module('controllers.orders', ['ui.bootstrap'])
 
-.controller('OrdersCtrl', ['$scope', '$http', function($scope, $http) {
+.controller('OrdersCtrl', ['$scope', '$http', 'OrderService', function($scope, $http, OrderService) {
   var ordersMasterList;
   
   $http.get('/orders').success(function (orders) {
-    ordersMasterList = orders.map(addComputedFields);
+    ordersMasterList = orders.map(OrderService.addComputedFields);
     $scope.orders = ordersMasterList
   });
 
@@ -45,24 +45,6 @@ angular.module('controllers.orders', ['ui.bootstrap'])
 
 .controller('OrderDetailsCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
   $http.get('/orders/' + $routeParams.orderId).success(function (order) {
-    $scope.order = addComputedFields(order);
+    $scope.order = OrderService.addComputedFields(order);
   });
 }]);
-
-
-function addComputedFields (order) {
-  switch (order.status) {
-    case "Complete":
-      order.statusLabel = "success";
-      break;
-    case "In Progress":
-      order.statusLabel = "warning";
-      break;
-    case "Canceled":
-      order.statusLabel = "danger";
-      break;
-  }
-
-  order.customerDisplay = order._customer.username + ' (' + order._customer.email + ')'
-  return order;
-}

@@ -9,8 +9,11 @@ angular.module('controllers.customers', [])
   });
 }])
 
-.controller('CustomerDetailsCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
-  $http.get('/customers/' + $routeParams.customerId).success(function (customer) {
-    $scope.customer = customer;
-  });
+.controller('CustomerDetailsCtrl', ['$scope', '$http', '$routeParams', 'OrderService', 
+    function($scope, $http, $routeParams, OrderService) {
+    $http.get('/customers/' + $routeParams.customerId).success(function (customer) {
+      $scope.customer = customer;
+      $scope.customer._orders = $scope.customer._orders.map(OrderService.addComputedFields);
+    }
+  );
 }]);
