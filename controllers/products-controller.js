@@ -19,7 +19,7 @@ module.exports = {
       if (err) {
         res.json(err);
       }
-      return Order.find({_product: product._id}, function (err, orders) {
+      return Order.find({_product: product._id}).populate("_customer").exec(function (err, orders) {
         product = JSON.parse(JSON.stringify(product));
         product._orders = orders || [];
         return res.json(err || product);

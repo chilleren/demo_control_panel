@@ -6,6 +6,8 @@ var faker = require('faker');
 var Customer = mongoose.model("Customer");
 var Product = mongoose.model("Product");
 
+var firstOrderNumber = 10000
+
 
 function randomStatus () {
   var statuses = ['In Progress', 'Canceled', 'Complete'];
@@ -39,6 +41,7 @@ module.exports = function (callback) {
         orders.push({
           _product: pluckRandom(products)._id,
           _customer: pluckRandom(customers)._id,
+          orderNumber: firstOrderNumber + i,
           quantity: randomInt(1, 4),
           status: randomStatus(),
           createdAt: faker.date.past()
