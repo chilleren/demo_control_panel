@@ -1,6 +1,11 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+
+    <div class="col-md-3">
+      <div products-filter></div>
+    </div>
+
+    <div class="col-md-9">
 
       <div class="widget">
         <table class="table">
@@ -22,13 +27,11 @@
           </thead>
           <tr ng-repeat="customer in customers">
             <td>
-              <a ng-href="/#/customers/{{customer._id}}">{{customer.username}}</a>
+              <a ng-href="/#/customers/{{customer._id}}"  ng-bind-html="customer.username | highlight:searchString"></a>
             </td>
-            <td>
-              {{customer.email}}
+            <td ng-bind-html="customer.email | highlight:searchString">
             </td>
-            <td>
-              {{customer.firstname}} {{customer.lastname}}
+            <td ng-bind-html="customer.fullName | highlight:searchString">
             </td>
             <td>
               {{customer.createdAt | date}}

@@ -31,15 +31,6 @@ angular.module('controllers.orders', ['ui.bootstrap'])
 
 }])
 
-.filter('highlight', function ($sce) {
-  return function(text, phrase) {
-    if (phrase) {
-      text = text.replace(new RegExp('(' + phrase + ')', 'gi'), '<span class="highlighted">$1</span>');
-    }
-    return $sce.trustAsHtml(text)
-  }
-})
-
 .controller('OrderDetailsCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
   $http.get('/orders/' + $routeParams.orderId).success(function (order) {
     $scope.order = OrderService.addComputedFields(order);

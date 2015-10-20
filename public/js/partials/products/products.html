@@ -1,6 +1,11 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+
+    <div class="col-md-3">
+      <div products-filter></div>
+    </div>
+
+    <div class="col-md-9">
 
       <div class="widget">
         <table class="table">
@@ -19,10 +24,9 @@
           </thead>
           <tr ng-repeat="product in products">
             <td>
-              <a ng-href="/#/products/{{product._id}}">{{product.name}}</a>
+              <a ng-href="/#/products/{{product._id}}" ng-bind-html="product.name | highlight:searchString"></a>
             </td>
-            <td>
-              {{product.description}}
+            <td ng-bind-html="product.description | highlight:searchString">
             </td>
             <td>
               {{product.price | currency}}

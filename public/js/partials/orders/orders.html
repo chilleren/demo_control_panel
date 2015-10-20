@@ -41,7 +41,7 @@
           </thead>
           <tr ng-repeat="order in orders">
             <td>
-              <a ng-href="/#/orders/{{order._id}}">{{order._id}}</a>
+              <a ng-href="/#/orders/{{order._id}}">{{order.orderNumber}}</a>
             </td>
             <td>
               {{order.createdAt | date}}

@@ -5,24 +5,19 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class="widget">
         <h2>Customer Details</h2>
-        <p>
-          username: {{customer.username}}
-        </p>
-        <p>
-          email: {{customer.email}}
-        </p>
-        <p>
-          full name: {{customer.firstname}} {{customer.lastname}}
-        </p>
-        <p>
-          created: {{customer.createdAt | date}}
-        </p>
+
+        <h4>Email<br /><small>{{customer.email}}</small></h4>
+
+        <h4>Name<br /><small>{{customer.firstname}} {{customer.lastname}}</small></h4>
+
+        <h4>Signed Up<br /><small>{{customer.createdAt | date}}</small></h4>
+
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-8">
 
       <div class="widget">
         <h2>Order History</h2>
@@ -38,7 +33,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="order in customer._orders">
-                <td>{{order._id}}</td>
+                <td><a ng-href="/#/orders/{{order._id}}">{{order.orderNumber}}</a></td>
                 <td><span class="label label-{{order.statusLabel}}">{{order.status}}</span></td>
                 <td>{{order.createdAt | date}}</td>
                 <td>{{order.quantity * order._product.price | currency}}</td>
