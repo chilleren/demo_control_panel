@@ -14,20 +14,36 @@
           <thead>
             <tr>
               <th>
-                Username
+                <a href="javascript:;" ng-click="toggleSort('username')">
+                  Username
+                  <span ng-show="showUpCaret('username')">&#9650;</span>
+                  <span ng-show="showDownCaret('username')"> &#9660;</span>
+                </a>
               </th>
               <th>
-                Email
+                <a href="javascript:;" ng-click="toggleSort('email')">
+                  Email
+                  <span ng-show="showUpCaret('email')">&#9650;</span>
+                  <span ng-show="showDownCaret('email')"> &#9660;</span>
+                </a>
               </th>
               <th>
-                Full Name
+                <a href="javascript:;" ng-click="toggleSort('fullName')">
+                  Full Name 
+                  <span ng-show="showUpCaret('fullName')">&#9650;</span>
+                  <span ng-show="showDownCaret('fullName')"> &#9660;</span>
+                </a>
               </th>
               <th>
-                Created At
+                <a href="javascript:;" ng-click="toggleSort('createdAt')">
+                  Created At 
+                  <span ng-show="showUpCaret('createdAt')">&#9650;</span>
+                  <span ng-show="showDownCaret('createdAt')"> &#9660;</span>
+                </a>
               </th>
             </tr>
           </thead>
-          <tr ng-repeat="customer in customers">
+          <tr ng-repeat="customer in customers | orderBy:sortField:sortReverse ">
             <td>
               <a ng-href="/#/customers/{{customer._id}}"  ng-bind-html="customer.username | highlight:searchString"></a>
             </td>

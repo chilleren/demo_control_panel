@@ -15,32 +15,64 @@
           <thead>
             <tr>
               <th>
-                Order Id
+                <a href="javascript:;" ng-click="toggleSort('orderNumber')">
+                  Order Id
+                  <span ng-show="showUpCaret('orderNumber')">&#9650;</span>
+                  <span ng-show="showDownCaret('orderNumber')"> &#9660;</span>
+                </a>
               </th>
               <th>
-                Order Date
+                <a href="javascript:;" ng-click="toggleSort('createdAt')">
+                  Order Date
+                  <span ng-show="showUpCaret('createdAt')">&#9650;</span>
+                  <span ng-show="showDownCaret('createdAt')"> &#9660;</span>
+                </a>
               </th>
               <th>
-                Status
+                <a href="javascript:;" ng-click="toggleSort('status')">
+                  Status
+                  <span ng-show="showUpCaret('status')">&#9650;</span>
+                  <span ng-show="showDownCaret('status')"> &#9660;</span>
+                </a>
               </th>
               <th>
-                Product
+                <a href="javascript:;" ng-click="toggleSort('_product.name')">
+                  Product
+                  <span ng-show="showUpCaret('_product.name')">&#9650;</span>
+                  <span ng-show="showDownCaret('_product.name')"> &#9660;</span>
+                </a>
               </th>
               <th>
-                Customer
+                <a href="javascript:;" ng-click="toggleSort('_customer.username')">
+                  Customer
+                  <span ng-show="showUpCaret('_customer.username')">&#9650;</span>
+                  <span ng-show="showDownCaret('_customer.username')"> &#9660;</span>
+                </a>
               </th>
               <th>
-                Quantity
+                <a href="javascript:;" ng-click="toggleSort('quantity')">
+                  Quantity
+                  <span ng-show="showUpCaret('quantity')">&#9650;</span>
+                  <span ng-show="showDownCaret('quantity')"> &#9660;</span>
+                </a>
               </th>
               <th>
-                Unit Price
+                <a href="javascript:;" ng-click="toggleSort('_product.price')">
+                  Unit Price
+                  <span ng-show="showUpCaret('_product.price')">&#9650;</span>
+                  <span ng-show="showDownCaret('_product.price')"> &#9660;</span>
+                </a>
               </th>
               <th>
-                Total
+                <a href="javascript:;" ng-click="toggleSort('total')">
+                  Total
+                  <span ng-show="showUpCaret('total')">&#9650;</span>
+                  <span ng-show="showDownCaret('total')"> &#9660;</span>
+                </a>
               </th>
             </tr>
           </thead>
-          <tr ng-repeat="order in orders">
+          <tr ng-repeat="order in orders | orderBy:sortField:sortReverse">
             <td>
               <a ng-href="/#/orders/{{order._id}}">{{order.orderNumber}}</a>
             </td>

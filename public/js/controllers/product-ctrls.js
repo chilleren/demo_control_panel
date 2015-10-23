@@ -4,6 +4,22 @@ angular.module('controllers.products', [])
 
 .controller('ProductsCtrl', ['$scope', '$http', function($scope, $http) {
   var productsMasterList;
+
+  $scope.sortField = 'name';
+  $scope.sortReverse = false;
+
+  $scope.toggleSort = function (sortField) {
+    $scope.sortField = sortField; 
+    $scope.sortReverse = !$scope.sortReverse;
+  }
+
+  $scope.showUpCaret = function (sortField) {
+    return $scope.sortField == sortField && !$scope.sortReverse;
+  }
+
+  $scope.showDownCaret = function (sortField) {
+    return $scope.sortField == sortField && $scope.sortReverse;
+  }
   
   $http.get('/products').success(function (products) {
     productsMasterList = products;
