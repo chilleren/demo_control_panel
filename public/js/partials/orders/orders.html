@@ -15,60 +15,28 @@
           <thead>
             <tr>
               <th>
-                <a href="javascript:;" ng-click="toggleSort('orderNumber')">
-                  Order Id
-                  <span ng-show="showUpCaret('orderNumber')">&#9650;</span>
-                  <span ng-show="showDownCaret('orderNumber')"> &#9660;</span>
-                </a>
+                <div sort-link field="orderNumber" label="Order Id"></div>
               </th>
               <th>
-                <a href="javascript:;" ng-click="toggleSort('createdAt')">
-                  Order Date
-                  <span ng-show="showUpCaret('createdAt')">&#9650;</span>
-                  <span ng-show="showDownCaret('createdAt')"> &#9660;</span>
-                </a>
+                <div sort-link field="createdAt" label="Order Date"></div>
               </th>
               <th>
-                <a href="javascript:;" ng-click="toggleSort('status')">
-                  Status
-                  <span ng-show="showUpCaret('status')">&#9650;</span>
-                  <span ng-show="showDownCaret('status')"> &#9660;</span>
-                </a>
+                <div sort-link field="status" label="Status"></div>
               </th>
               <th>
-                <a href="javascript:;" ng-click="toggleSort('_product.name')">
-                  Product
-                  <span ng-show="showUpCaret('_product.name')">&#9650;</span>
-                  <span ng-show="showDownCaret('_product.name')"> &#9660;</span>
-                </a>
+                <div sort-link field="_product.name" label="Product"></div>
               </th>
               <th>
-                <a href="javascript:;" ng-click="toggleSort('_customer.username')">
-                  Customer
-                  <span ng-show="showUpCaret('_customer.username')">&#9650;</span>
-                  <span ng-show="showDownCaret('_customer.username')"> &#9660;</span>
-                </a>
+                <div sort-link field="_customer.username" label="Customer"></div>
               </th>
               <th>
-                <a href="javascript:;" ng-click="toggleSort('quantity')">
-                  Quantity
-                  <span ng-show="showUpCaret('quantity')">&#9650;</span>
-                  <span ng-show="showDownCaret('quantity')"> &#9660;</span>
-                </a>
+                <div sort-link field="quantity" label="Quantity"></div>
               </th>
               <th>
-                <a href="javascript:;" ng-click="toggleSort('_product.price')">
-                  Unit Price
-                  <span ng-show="showUpCaret('_product.price')">&#9650;</span>
-                  <span ng-show="showDownCaret('_product.price')"> &#9660;</span>
-                </a>
+                <div sort-link field="_product.price" label="Unit Price"></div>
               </th>
               <th>
-                <a href="javascript:;" ng-click="toggleSort('total')">
-                  Total
-                  <span ng-show="showUpCaret('total')">&#9650;</span>
-                  <span ng-show="showDownCaret('total')"> &#9660;</span>
-                </a>
+                <div sort-link field="total" label="Total"></div>
               </th>
             </tr>
           </thead>

@@ -4,22 +4,6 @@ angular.module('controllers.orders', ['ui.bootstrap'])
 
 .controller('OrdersCtrl', ['$scope', '$http', 'OrderService', function($scope, $http, OrderService) {
   var ordersMasterList;
-
-  $scope.sortField = 'orderNumber';
-  $scope.sortReverse = false;
-
-  $scope.toggleSort = function (sortField) {
-    $scope.sortField = sortField; 
-    $scope.sortReverse = !$scope.sortReverse;
-  }
-
-  $scope.showUpCaret = function (sortField) {
-    return $scope.sortField == sortField && !$scope.sortReverse;
-  }
-
-  $scope.showDownCaret = function (sortField) {
-    return $scope.sortField == sortField && $scope.sortReverse;
-  }
   
   $http.get('/orders').success(function (orders) {
     ordersMasterList = orders.map(OrderService.addComputedFields);

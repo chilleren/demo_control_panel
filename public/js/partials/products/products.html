@@ -13,21 +13,13 @@
           <thead>
             <tr>
               <th>
-                <a href="javascript:;" ng-click="toggleSort('name')">
-                  Name 
-                  <span ng-show="showUpCaret('name')">&#9650;</span>
-                  <span ng-show="showDownCaret('name')"> &#9660;</span>
-                </a>
+                <div sort-link field="name" label="Name"></div>
               </th>
               <th>
-                Description
+                <div sort-link field="description" label="Description"></div>
               </th>
               <th>
-                <a href="javascript:;" ng-click="toggleSort('price')">
-                  Price 
-                  <span ng-show="showUpCaret('price')">&#9650;</span>
-                  <span ng-show="showDownCaret('price')"> &#9660;</span>
-                </a>
+                <div sort-link field="price" label="Price"></div>
               </th>
             </tr>
           </thead>

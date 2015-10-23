@@ -17,4 +17,29 @@ directives.directive('ordersFilter', function() {
     templateUrl: "js/partials/customers/customers-filter.html"
   }
 })
+.directive('sortLink', function() {
+  return {
+    templateUrl: "js/partials/shared/sort-link.html",
+    scope: true,
+    replace: true,
+    link: function (scope, elem, attrs) {
+      scope.label = attrs.label;
+      var sortField = attrs.field;
+      scope.sortReverse = false;
+
+      scope.toggleSort = function () {
+        scope.$parent.sortField = sortField;
+        scope.$parent.sortReverse = !scope.$parent.sortReverse;
+      }
+
+      scope.showUpCaret = function () {
+        return scope.$parent.sortField == sortField && !scope.$parent.sortReverse;
+      }
+
+      scope.showDownCaret = function () {
+        return scope.$parent.sortField == sortField && scope.$parent.sortReverse;
+      }
+    }
+  }
+})
 ;

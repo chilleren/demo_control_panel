@@ -14,32 +14,16 @@
           <thead>
             <tr>
               <th>
-                <a href="javascript:;" ng-click="toggleSort('username')">
-                  Username
-                  <span ng-show="showUpCaret('username')">&#9650;</span>
-                  <span ng-show="showDownCaret('username')"> &#9660;</span>
-                </a>
+                <div sort-link field="username" label="Username"></div>
               </th>
               <th>
-                <a href="javascript:;" ng-click="toggleSort('email')">
-                  Email
-                  <span ng-show="showUpCaret('email')">&#9650;</span>
-                  <span ng-show="showDownCaret('email')"> &#9660;</span>
-                </a>
+                <div sort-link field="email" label="Email"></div>
               </th>
               <th>
-                <a href="javascript:;" ng-click="toggleSort('fullName')">
-                  Full Name 
-                  <span ng-show="showUpCaret('fullName')">&#9650;</span>
-                  <span ng-show="showDownCaret('fullName')"> &#9660;</span>
-                </a>
+                <div sort-link field="fullName" label="Full Name"></div>
               </th>
               <th>
-                <a href="javascript:;" ng-click="toggleSort('createdAt')">
-                  Created At 
-                  <span ng-show="showUpCaret('createdAt')">&#9650;</span>
-                  <span ng-show="showDownCaret('createdAt')"> &#9660;</span>
-                </a>
+                <div sort-link field="createdAt" label="Created At"></div>
               </th>
             </tr>
           </thead>

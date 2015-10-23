@@ -5,22 +5,6 @@ angular.module('controllers.customers', [])
 .controller('CustomersCtrl', ['$scope', '$http', function($scope, $http) {
   var customerMasterList;
 
-  $scope.sortField = 'username';
-  $scope.sortReverse = false;
-
-  $scope.toggleSort = function (sortField) {
-    $scope.sortField = sortField; 
-    $scope.sortReverse = !$scope.sortReverse;
-  }
-
-  $scope.showUpCaret = function (sortField) {
-    return $scope.sortField == sortField && !$scope.sortReverse;
-  }
-
-  $scope.showDownCaret = function (sortField) {
-    return $scope.sortField == sortField && $scope.sortReverse;
-  }
-
   $http.get('/customers').success(function (customers) {
     customerMasterList = customers;
     $scope.customers = customerMasterList.map(addFullName);
