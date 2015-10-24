@@ -4,6 +4,8 @@ angular.module('controllers.orders', ['ui.bootstrap'])
 
 .controller('OrdersCtrl', ['$scope', '$http', 'OrderService', function($scope, $http, OrderService) {
   var ordersMasterList;
+
+  $scope.statusFilter = "All";
   
   $http.get('/orders').success(function (orders) {
     ordersMasterList = orders.map(OrderService.addComputedFields);
@@ -12,21 +14,20 @@ angular.module('controllers.orders', ['ui.bootstrap'])
 
   $scope.search = function () {
     $scope.orders = ordersMasterList.filter(function (order) {
-      var searchString = $scope.searchString.toLowerCase();
-      var productNameFound = order._product.name.toLowerCase().indexOf($scope.searchString) > -1;
-      var customerUsernameFound = order._customer.username.toLowerCase().indexOf($scope.searchString) > -1;
-      var customerEmailFound = order._customer.email.toLowerCase().indexOf($scope.searchString) > -1;
-      return  productNameFound || customerUsernameFound || customerEmailFound;
+      return containsSearchString(order, $scope.searchString) && filterByStatus(order, $scope.statusFilter);
     });
   }
 
-  $scope.filterByStatus = function () {
-    $scope.orders = ordersMasterList.filter(function (order) {
-      if ($scope.statusFilter === "All") {
-        return true;
-      }
-      return  order.status === $scope.statusFilter;
-    });
+  function containsSearchString (order, searchString) {
+    var searchString = searchString.toLowerCase();
+    var productNameFound = order._product.name.toLowerCase().indexOf(searchString) > -1;
+    var customerUsernameFound = order._customer.username.toLowerCase().indexOf(searchString) > -1;
+    var customerEmailFound = order._customer.email.toLowerCase().indexOf(searchString) > -1;
+    return  productNameFound || customerUsernameFound || customerEmailFound;
+  }
+
+  function filterByStatus (order, statusFilter) {
+    return statusFilter === "All" || order.status === statusFilter;
   }
 
 }])
