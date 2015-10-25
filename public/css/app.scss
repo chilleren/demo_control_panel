@@ -15,3 +15,14 @@ body {
 span.highlighted {
   background: yellow;
 }
+
+.scroll-table {
+
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.dashboard-widget {
+  height: 400px;
+  margin-bottom: 40px;
+}

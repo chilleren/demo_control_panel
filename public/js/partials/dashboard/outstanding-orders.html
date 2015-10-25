@@ -1,0 +1,39 @@
+<div class="widget dashboard-widget" ng-controller="OrdersCtrl">
+
+  <h3>Outstanding Orders</h3>
+
+  <div class="scroll-table">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            Order Id
+          </th>
+          <th>
+            Date
+          </th>
+          <th>
+            Status
+          </th>
+          <th>
+            Customer
+          </th>
+        </tr>
+      </thead>
+      <tr ng-repeat="order in orders | filter:status='In Progress' | orderBy:'orderNumber' " ng-href="/#/orders/{{order._id}}" >
+        <td>
+          <a ng-href="/#/orders/{{order._id}}">{{order.orderNumber}}</a>
+        </td>
+        <td>
+          {{order.createdAt | date}}
+        </td>
+        <td>
+          <span class="label label-{{order.statusLabel}}">{{order.status}}</span>
+        </td>
+        <td>
+          {{order._customer.username}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

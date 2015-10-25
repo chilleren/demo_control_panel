@@ -7,6 +7,7 @@ angular.module('controllers.products', [])
 
   $scope.minPrice = "";
   $scope.maxPrice = "";
+  $scope.searchString = "";
   
   $http.get('/products').success(function (products) {
     productsMasterList = products;

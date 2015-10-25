@@ -17,6 +17,21 @@ directives.directive('ordersFilter', function() {
     templateUrl: "js/partials/customers/customers-filter.html"
   }
 })
+.directive('recentSignups', function() {
+  return {
+    templateUrl: "js/partials/dashboard/recent-signups.html"
+  }
+})
+.directive('outstandingOrders', function() {
+  return {
+    templateUrl: "js/partials/dashboard/outstanding-orders.html"
+  }
+})
+.directive('vizualization', function() {
+  return {
+    templateUrl: "js/partials/dashboard/vizualization.html"
+  }
+})
 .directive('sortLink', function() {
   return {
     templateUrl: "js/partials/shared/sort-link.html",

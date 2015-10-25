@@ -6,6 +6,7 @@ angular.module('controllers.orders', ['ui.bootstrap'])
   var ordersMasterList;
 
   $scope.statusFilter = "All";
+  $scope.searchString = "";
   
   $http.get('/orders').success(function (orders) {
     ordersMasterList = orders.map(OrderService.addComputedFields);

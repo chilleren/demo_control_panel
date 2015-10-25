@@ -4,6 +4,8 @@ angular.module('controllers.customers', [])
 
 .controller('CustomersCtrl', ['$scope', '$http', function($scope, $http) {
   var customerMasterList;
+  
+  $scope.searchString = "";
 
   $http.get('/customers').success(function (customers) {
     customerMasterList = customers;

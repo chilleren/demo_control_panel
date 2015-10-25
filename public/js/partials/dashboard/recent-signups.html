@@ -1,0 +1,30 @@
+<div class="widget dashboard-widget" ng-controller="CustomersCtrl">
+
+  <h3>Recent Signups</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          Date
+        </th>
+        <th>
+          Username
+        </th>
+        <th>
+          Email
+        </th>
+      </tr>
+    </thead>
+    <tr ng-repeat="customer in customers | orderBy:'createdAt':true | limitTo:6">
+      <td>
+        {{customer.createdAt | date}}
+      </td>
+      <td>
+        {{customer.username}}
+      </td>
+      <td>
+        {{customer.email}}
+      </td>
+    </tr>
+  </table>
+</div>
