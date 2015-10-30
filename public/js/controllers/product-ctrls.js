@@ -2,7 +2,7 @@
 
 angular.module('controllers.products', [])
 
-.controller('ProductsCtrl', ['$scope', '$http', function($scope, $http) {
+.controller('ProductsCtrl', ['$scope', '$http', 'SearchService', function($scope, $http, SearchService) {
   var productsMasterList;
 
   $scope.minPrice = "";
@@ -16,16 +16,10 @@ angular.module('controllers.products', [])
 
 
   $scope.search = function () {
-    $scope.products = productsMasterList.filter(function (product) {
-      return containsSearchString(product, $scope.searchString) && inPriceRange(product, $scope.minPrice, $scope.maxPrice)
+    var products = SearchService.search(productsMasterList, $scope.searchString, ['name', 'description']);
+    $scope.products = products.filter(function (product) {
+      return inPriceRange(product, $scope.minPrice, $scope.maxPrice)
     });
-  }
-
-  function containsSearchString (product, searchString) {
-    var searchString = searchString.toLowerCase();
-    var nameFound = product.name.toLowerCase().indexOf(searchString) > -1;
-    var descriptionFound = product.description.toLowerCase().indexOf(searchString) > -1;
-    return  nameFound || descriptionFound;
   }
 
   function inPriceRange (product, minPrice, maxPrice) {

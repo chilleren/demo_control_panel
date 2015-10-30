@@ -2,25 +2,20 @@
 
 angular.module('controllers.customers', [])
 
-.controller('CustomersCtrl', ['$scope', '$http', function($scope, $http) {
-  var customerMasterList;
-  
+.controller('CustomersCtrl', ['$scope', 'Customers', 'SearchService', function($scope, Customers, SearchService) {
   $scope.searchString = "";
 
-  $http.get('/customers').success(function (customers) {
-    customerMasterList = customers;
-    $scope.customers = customerMasterList.map(addFullName);
+  var customerMasterList;
+
+  Customers.query({}, function (customers) {
+    customerMasterList = customers.map(addFullName);
+    $scope.customers = customerMasterList;
   });
 
   $scope.search = function () {
-    $scope.customers = customerMasterList.filter(function (customer) {
-      var searchString = $scope.searchString.toLowerCase();
-      var usernameFound = customer.username.toLowerCase().indexOf($scope.searchString) > -1;
-      var emailFound = customer.email.toLowerCase().indexOf($scope.searchString) > -1;
-      var fullNameFound = customer.fullName.toLowerCase().indexOf($scope.searchString) > -1;
-      return  usernameFound || emailFound || fullNameFound;
-    });
+    $scope.customers = SearchService.search(customerMasterList, $scope.searchString, ['username', 'email', 'fullName']);
   }
+
 }])
 
 .controller('CustomerDetailsCtrl', ['$scope', '$http', '$routeParams', 'OrderService', 

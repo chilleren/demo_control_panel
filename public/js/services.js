@@ -1,6 +1,51 @@
 'use strict';
 
-var myServices = angular.module('myServices', []);
+var myServices = angular.module('myServices', ['ngResource']);
+
+myServices.factory('Customers', ['$resource', function ($resource) {
+  console.log('hi')
+  return $resource('/customers', {}, {
+    query: {method: 'GET', params: {}, isArray: true} 
+  });
+
+
+  // $http.get('/customers').success(function (customers) {
+  //   customerMasterList = customers;
+  //   $scope.customers = customerMasterList.map(addFullName);
+  // });
+}]);
+
+myServices.factory('SearchService', function () {
+  var queryByDotNotation = function (obj, query) {
+    var parts = query.split('.');
+    var newObj = obj[parts[0]];
+    if (parts[1]){
+        parts.splice(0, 1);
+        var newQuery = parts.join('.');
+        return queryByDotNotation(newObj, newQuery);
+    }
+    return newObj;
+  }
+
+  return {
+    //takes a list of objects, a search string, and an array of fields
+    //returns a new list where the field values of the objects match the search string
+    //@list: an array of objects
+    //@searchString: a string to find
+    //@fields: array of field names of objects in @list, can use dot notation to search nested fields
+    search: function (list, searchString, fields) {
+      return list.filter(function (item) {
+        for (var i = 0; i < fields.length; i++) {
+          var fieldValue = queryByDotNotation(item, fields[i]);
+          if(fieldValue.toLowerCase().indexOf(searchString.toLowerCase()) > -1) {
+            return true;
+          }
+        }
+        return false;
+      });
+    }
+  }
+});
 
 myServices.factory('OrderService', function() {
   return {
