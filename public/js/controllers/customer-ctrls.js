@@ -2,12 +2,12 @@
 
 angular.module('controllers.customers', [])
 
-.controller('CustomersCtrl', ['$scope', 'Customers', 'SearchService', function($scope, Customers, SearchService) {
+.controller('CustomersCtrl', ['$scope', 'Customer', 'SearchService', function($scope, Customer, SearchService) {
   $scope.searchString = "";
 
   var customerMasterList;
 
-  Customers.query({}, function (customers) {
+  Customer.query({}, function (customers) {
     customerMasterList = customers.map(addFullName);
     $scope.customers = customerMasterList;
   });
@@ -18,14 +18,15 @@ angular.module('controllers.customers', [])
 
 }])
 
-.controller('CustomerDetailsCtrl', ['$scope', '$http', '$routeParams', 'OrderService', 
-    function($scope, $http, $routeParams, OrderService) {
-    $http.get('/customers/' + $routeParams.customerId).success(function (customer) {
-      $scope.customer = customer;
+.controller('CustomerDetailsCtrl', ['$scope', '$routeParams', 'OrderService', 'Customer',
+  function($scope, $routeParams, OrderService, Customer) {
+
+    Customer.get({customerId: $routeParams.customerId}, function (customer) {
+      $scope.customer = addFullName(customer);
       $scope.customer._orders = $scope.customer._orders.map(OrderService.addComputedFields);
-    }
-  );
-}]);
+    });
+  }
+]);
 
 
 function addFullName (customer) {

@@ -2,17 +2,22 @@
 
 var myServices = angular.module('myServices', ['ngResource']);
 
-myServices.factory('Customers', ['$resource', function ($resource) {
-  console.log('hi')
-  return $resource('/customers', {}, {
+myServices.factory('Customer', ['$resource', function ($resource) {
+  return $resource('/customers/:customerId', {}, {
     query: {method: 'GET', params: {}, isArray: true} 
   });
+}]);
 
+myServices.factory('Order', ['$resource', function ($resource) {
+  return $resource('/orders/:orderId', {}, {
+    query: {method: 'GET', params: {}, isArray: true} 
+  });
+}]);
 
-  // $http.get('/customers').success(function (customers) {
-  //   customerMasterList = customers;
-  //   $scope.customers = customerMasterList.map(addFullName);
-  // });
+myServices.factory('Product', ['$resource', function ($resource) {
+  return $resource('/products/:productId', {}, {
+    query: {method: 'GET', params: {}, isArray: true} 
+  });
 }]);
 
 myServices.factory('SearchService', function () {

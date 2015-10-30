@@ -2,18 +2,17 @@
 
 angular.module('controllers.orders', ['ui.bootstrap'])
 
-.controller('OrdersCtrl', ['$scope', '$http', 'OrderService', 'SearchService', 
-  function($scope, $http, OrderService, SearchService) {
+.controller('OrdersCtrl', ['$scope', 'Order', 'OrderService', 'SearchService', 
+  function($scope, Order, OrderService, SearchService) {
     var ordersMasterList;
 
     $scope.statusFilter = "All";
     $scope.searchString = "";
     
-    $http.get('/orders').success(function (orders) {
+    Order.query({}, function (orders) {
       ordersMasterList = orders.map(OrderService.addComputedFields);
-      $scope.orders = ordersMasterList
+      $scope.orders = ordersMasterList;
     });
-
 
     $scope.search = function () {
       var searchFields = ['_product.name', '_customer.username', '_customer.email']
@@ -26,8 +25,10 @@ angular.module('controllers.orders', ['ui.bootstrap'])
   }
 ])
 
-.controller('OrderDetailsCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
-  $http.get('/orders/' + $routeParams.orderId).success(function (order) {
-    $scope.order = OrderService.addComputedFields(order);
-  });
-}]);
+.controller('OrderDetailsCtrl', ['$scope', 'Order', '$routeParams', 'OrderService', 
+  function($scope, Order, $routeParams, OrderService) {
+    Order.get({orderId: $routeParams.orderId}, function (order) {
+      $scope.order = OrderService.addComputedFields(order);
+    });
+  }
+]);
