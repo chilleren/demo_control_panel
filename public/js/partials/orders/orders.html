@@ -17,7 +17,7 @@
               <th>
                 <div sort-link field="orderNumber" label="Order Id"></div>
               </th>
-              <th>
+              <th class="date-col">
                 <div sort-link field="createdAt" label="Order Date"></div>
               </th>
               <th>
@@ -28,12 +28,6 @@
               </th>
               <th>
                 <div sort-link field="_customer.username" label="Customer"></div>
-              </th>
-              <th>
-                <div sort-link field="quantity" label="Quantity"></div>
-              </th>
-              <th>
-                <div sort-link field="_product.price" label="Unit Price"></div>
               </th>
               <th>
                 <div sort-link field="total" label="Total"></div>
@@ -59,12 +53,6 @@
               <a ng-href="/#/customers/{{order._customer._id}}" 
                 ng-bind-html="order.customerDisplay | highlight:searchString">
               </a>
-            </td>
-            <td>
-              {{order.quantity}}
-            </td>
-            <td>
-              {{order._product.price | currency}}
             </td>
             <td>
               {{order.total | currency}}
