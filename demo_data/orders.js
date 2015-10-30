@@ -41,11 +41,21 @@ module.exports = function (callback) {
         orders.push({
           _product: pluckRandom(products)._id,
           _customer: pluckRandom(customers)._id,
-          orderNumber: firstOrderNumber + i,
-          quantity: randomInt(1, 4),
+          //orderNumber: firstOrderNumber + i,
+          quantity: randomInt(1, 10),
           status: randomStatus(),
           createdAt: faker.date.past()
         });
+      }
+
+      orders = orders.sort(function(a, b){
+        return (new Date(b.createdAt) - new Date(a.createdAt));
+      });
+
+      orders = orders.reverse();
+
+      for (var i = 0; i < orders.length; i++) {
+        orders[i].orderNumber = firstOrderNumber + i;
       }
 
       return callback(null, orders);

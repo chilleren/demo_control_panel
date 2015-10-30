@@ -4,6 +4,8 @@ angular.module('controllers.customers', [])
 
 .controller('CustomersCtrl', ['$scope', 'Customer', 'SearchService', function($scope, Customer, SearchService) {
   $scope.searchString = "";
+  $scope.sortField = "username";
+  $scope.sortReverse = false;
 
   var customerMasterList;
 

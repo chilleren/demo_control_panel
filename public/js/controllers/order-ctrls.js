@@ -8,6 +8,8 @@ angular.module('controllers.orders', ['ui.bootstrap'])
 
     $scope.statusFilter = "All";
     $scope.searchString = "";
+    $scope.sortField = "orderNumber";
+    $scope.sortReverse = true;
     $scope.minTotal = "";
     $scope.maxTotal = "";
     

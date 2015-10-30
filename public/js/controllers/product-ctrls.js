@@ -8,6 +8,8 @@ angular.module('controllers.products', [])
   $scope.minPrice = "";
   $scope.maxPrice = "";
   $scope.searchString = "";
+  $scope.sortField = "name";
+  $scope.sortReverse = false;
   
   Product.query({}, function (products) {
     productsMasterList = products.map(addFullName);

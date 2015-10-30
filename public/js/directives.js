@@ -40,7 +40,7 @@ directives.directive('ordersFilter', function() {
     link: function (scope, elem, attrs) {
       scope.label = attrs.label;
       var sortField = attrs.field;
-      scope.sortReverse = false;
+      scope.sortReverse = true;
 
       scope.toggleSort = function () {
         scope.$parent.sortField = sortField;
