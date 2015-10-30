@@ -8,6 +8,8 @@ angular.module('controllers.orders', ['ui.bootstrap'])
 
     $scope.statusFilter = "All";
     $scope.searchString = "";
+    $scope.minTotal = "";
+    $scope.maxTotal = "";
     
     Order.query({}, function (orders) {
       ordersMasterList = orders.map(OrderService.addComputedFields);
@@ -18,9 +20,17 @@ angular.module('controllers.orders', ['ui.bootstrap'])
       var searchFields = ['_product.name', '_customer.username', '_customer.email']
       var orders = SearchService.search(ordersMasterList, $scope.searchString, searchFields);
       $scope.orders = orders.filter(function (order) {
-        return $scope.statusFilter === "All" || order.status === $scope.statusFilter;
+        return inPriceRange(order, $scope.minTotal, $scope.maxTotal) && 
+          ($scope.statusFilter === "All" || order.status === $scope.statusFilter);
       });
     }
+
+    function inPriceRange (order, mintotal, maxtotal) {
+      mintotal = +(mintotal || 0);
+      maxtotal = +(maxtotal || Infinity);
+      return order.total > mintotal && order.total < maxtotal;
+    }
+
 
   }
 ])

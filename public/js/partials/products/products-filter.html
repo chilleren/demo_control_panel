@@ -1,34 +1,23 @@
 
 <div class="widget">
-<form>
-  <div class="form-group">
-    <label>Search</label>
-    <input type="text" placeholder="search" ng-model="searchString" ng-change="search()" class="form-control">
-  </div>
-  <div class="form-group">
-    <label>Min Price</label>
-    <div class="input-group">
-      <div class="input-group-addon">$</div>
-      <input type="text" placeholder="min" ng-model="minPrice" ng-change="search()" class="form-control">
-    </div>  
-  </div>
-  <div class="form-group">
-    <label>Max Price</label>
-    <div class="input-group">
-      <div class="input-group-addon">$</div>
-      <input type="text" placeholder="max" ng-model="maxPrice" ng-change="search()" class="form-control">
+  <form>
+    <div class="form-group">
+      <label>Search</label>
+      <input type="text" placeholder="search" ng-model="searchString" ng-change="search()" class="form-control">
     </div>
-  </div>
-  <!--<div class="form-group">
-    <label>Status</label>
-
-    <select class="form-control" ng-model="statusFilter" ng-change="filterByStatus()">
-      <option>All</option>
-      <option>Complete</option>
-      <option>In Progress</option>
-      <option>Canceled</option>
-    </select>
-  </div>-->
-
+    <div class="form-group">
+      <label>Min Price</label>
+      <div class="input-group">
+        <div class="input-group-addon">$</div>
+        <input type="text" placeholder="min" ng-model="minPrice" ng-change="search()" class="form-control">
+      </div>  
+    </div>
+    <div class="form-group">
+      <label>Max Price</label>
+      <div class="input-group">
+        <div class="input-group-addon">$</div>
+        <input type="text" placeholder="max" ng-model="maxPrice" ng-change="search()" class="form-control">
+      </div>
+    </div>
   </form>
 </div>
