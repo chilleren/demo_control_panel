@@ -2,6 +2,7 @@
 
 var controlPanelApp = angular.module('controlPanelApp', [
   'ngRoute',
+  'highcharts-ng',
   'controllers.dashboard',
   'controllers.products',
   'controllers.orders',
