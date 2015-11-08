@@ -16,7 +16,9 @@ fs.readdirSync(modelsPath).forEach(function (filename) {
   require(path.join(modelsPath, filename));
 });
 
-mongoose.connect("mongodb://localhost:27017/demo_control_panel");
+var mongoUrl = process.env.MONGOLAB_URI || "mongodb://localhost:27017/demo_control_panel";
+
+mongoose.connect(mongoUrl);
 mongoose.connection.once("open", function () {
 
   routes(app); //load api routes
