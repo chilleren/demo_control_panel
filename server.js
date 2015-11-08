@@ -26,7 +26,7 @@ mongoose.connection.once("open", function () {
   // populateDb(function () {
   //   console.log('database populated');
 
-    var port = 8000;
+    var port = process.env.PORT || 8000;
     app.listen(port, function () {
       console.log("Listening on port " + port);
     });
