@@ -7,6 +7,8 @@ var mongoose = require('mongoose');
 var path = require('path');
 var populateDb = require('./demo_data/populate-db');
 var routes = require('./routes/index');
+var sass = require('node-sass');
+var sassMiddleware = require('node-sass-middleware');
 
 var app = express();
 
@@ -22,6 +24,12 @@ mongoose.connect(mongoUrl);
 mongoose.connection.once("open", function () {
 
   routes(app); //load api routes
+
+  app.use(sassMiddleware({
+    src: __dirname + "/public/",
+    dest: __dirname + "/public/",
+    debug: true
+  }));
 
   app.use(express.static(__dirname + "/public")); //serve static content
 

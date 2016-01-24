@@ -20,6 +20,8 @@
     "faker": "^3.0.1",
     "fs": "0.0.2",
     "mongoose": "^4.1.6",
+    "node-sass": "^3.4.2",
+    "node-sass-middleware": "^0.9.7",
     "path": "^0.11.14"
   }
 }
